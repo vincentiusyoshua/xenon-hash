@@ -3,10 +3,9 @@ from setuptools import setup, find_packages
 setup(
     name="xenon-hash",
     version="0.1.0",
-    packages=find_packages(),
-    install_requires=[
-        # Add any dependencies here
-    ],
+    package_dir={"": "src"},  # Tambah ini
+    packages=find_packages(where="src"),  # Ubah ini
+    install_requires=[],
     author="Your Name",
     author_email="your.email@example.com",
     description="A fast and efficient cryptographic hashing algorithm",
