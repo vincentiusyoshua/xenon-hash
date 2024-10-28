@@ -1,4 +1,4 @@
+from .xenon_hash import xenon_hash
 
-from .xenon_hash import XenonHash
-
-__all__ = ["XenonHash"]
+__version__ = '0.1.0'
+__all__ = ['xenon_hash']
