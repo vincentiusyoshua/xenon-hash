@@ -103,7 +103,6 @@ def bytes_to_blocks(b: bytes) -> List[List[int]]:
 
 def xenon_hash(message: str) -> str:
     """Main hash function with improved distribution"""
-    start_time = time.time()
     
     # Initialize state
     state = [
