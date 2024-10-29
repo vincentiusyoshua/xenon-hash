@@ -1,5 +1,4 @@
 from typing import List
-import time
 
 def rotl(x: int, r: int) -> int:
     """Rotate left function for 64-bit integers"""
@@ -114,20 +113,6 @@ def xenon_hash(message: str) -> str:
         0xC0AC29B7C97C50DD, 0x3F84D5B5B5470917
     ]
     
-    # Process message
-    padded = pad_message(message)
-    blocks = bytes_to_blocks(padded)
-    
-    padding_time = time.time()
-    print(f"Padding took: {(padding_time - start_time)*1000:.2f} ms")
-    
-    # Process blocks
-    for block in blocks:
-        state = compress(state, block)
-    
-    compression_time = time.time()
-    print(f"Compression took: {(compression_time - padding_time)*1000:.2f} ms")
-    
     # Enhanced finalization
     state = finalize_state(state)
     
@@ -155,9 +140,6 @@ def xenon_hash(message: str) -> str:
         hash_value_low ^= mixed
         hash_value_low = rotl(hash_value_low, 11)
     
-    final_time = time.time()
-    print(f"Finalization took: {(final_time - compression_time)*1000:.2f} ms")
-    print(f"Total time: {(final_time - start_time)*1000:.2f} ms\n")
     
     # Combine both halves into final 512-bit hash
     return f"{hash_value_high:016x}{hash_value_low:016x}"
